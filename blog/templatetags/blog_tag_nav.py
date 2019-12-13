@@ -1,8 +1,8 @@
 from django import template 
-from blog.models import PostCategory
+from blog.models import ArticleCategory
 register = template.Library()
 
 
 @register.simple_tag
 def blog_menu():
-	return PostCategory.objects.all()
+	return ArticleCategory.objects.all()

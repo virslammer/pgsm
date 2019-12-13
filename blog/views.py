@@ -6,13 +6,13 @@ def home(request):
 	}
 	return render(request,'blog/index.html',context)
 
-def post_list(request,name):
+def article_list(request,name):
 	obj  = get_object_or_404(ArticleCategory, name=name)
 	context = {
 		'Category':obj
 	}
 	return render(request,'blog/list-posts.html',context)
-def post_detail(request,id):
+def article_detail(request,id):
 
 	article = get_object_or_404(Article, id=id)
 	context = {
