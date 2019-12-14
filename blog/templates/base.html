@@ -60,7 +60,7 @@
               <ul class="site-menu js-clone-nav mr-auto d-none d-lg-block mb-0">
           {% blog_menu as menu%}
 				        {% for item in menu %}
-                <li><a href="{{item.get_absolute_url}}/">{{ item.name|capfirst }}</a></li>
+                <li><a href="{{item.get_absolute_url}}">{{ item.name|capfirst }}</a></li>
  
                 {% endfor %}
                 <li class="d-none d-lg-inline-block"><a href="#" class="js-search-toggle"><span class="icon-search"></span></a></li>

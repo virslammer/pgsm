@@ -6,16 +6,18 @@ def home(request):
 	}
 	return render(request,'blog/index.html',context)
 
-def article_list(request,name):
-	obj  = get_object_or_404(ArticleCategory, name=name)
+def article_list(request,slug):
+	obj  = get_object_or_404(ArticleCategory, slug=slug)
+	article_list = obj.article_set.all()
 	context = {
-		'Category':obj
+		'category':obj,
+		'article_list':article_list
 	}
 	return render(request,'blog/list-posts.html',context)
-def article_detail(request,id):
+def article_detail(request,slug):
 
-	article = get_object_or_404(Article, id=id)
+	article = get_object_or_404(Article, slug=slug)
 	context = {
-			'post':article
+			'article':article
 		}
 	return render(request,'blog/single.html',context)

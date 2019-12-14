@@ -5,4 +5,5 @@ register = template.Library()
 
 @register.simple_tag
 def blog_menu():
-	return ArticleCategory.objects.all()
+	menu = ArticleCategory.objects.all()
+	return menu
