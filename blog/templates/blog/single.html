@@ -1,17 +1,17 @@
 {% extends 'base.html' %}
     
 {% block content %}    
-    <div class="site-cover site-cover-sm same-height overlay single-page" style="background-image: url('images/img_2.jpg');">
+    <div class="site-cover site-cover-sm same-height overlay single-page" style="background-image: url('{{ article.cover.url}}');">
       <div class="container">
         <div class="row same-height justify-content-center">
           <div class="col-md-12 col-lg-10">
             <div class="post-entry text-center">
               <span class="post-category text-white bg-success mb-3">{{ article.category }}</span>
-              <h1 class="mb-4"><a href="#">{{article.subject}}</a></h1>
+              <h1 class="mb-4"><a href="{{ article.get_absolute_url}}">{{article.title}}</a></h1>
               <div class="post-meta align-items-center text-center">
                 <figure class="author-figure mb-0 mr-3 d-inline-block"><img src="images/person_1.jpg" alt="Image" class="img-fluid"></figure>
-                <span class="d-inline-block mt-1">By Minh Anh</span>
-                <span>&nbsp;-&nbsp; {{article.create_date}}</span>
+                <span class="d-inline-block mt-1">{{ article.author.get_full_name }}</span>
+                <span>&nbsp;-&nbsp; {{article.created_date}}</span>
               </div>
             </div>
           </div>
@@ -27,6 +27,8 @@
           <div class="col-md-12 col-lg-8 main-content">
             
             <div class="post-content-body">
+              <bold>{{ article.summary }}</bold>
+              <br>
               {{ article.content }}
             </div>
 

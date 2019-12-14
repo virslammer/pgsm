@@ -1,12 +1,12 @@
 from django.db import models
 from django.urls import reverse
-from django.template.defaultfilters import slugify
-
+from django.utils.text import slugify
+from django.contrib.auth.models import User
 # Create your models here.
 class ArticleCategory(models.Model):
 	name = models.CharField(max_length=255, unique=True)
 	slug = models.SlugField(null=False, unique=True)
-	cover_img = models.ImageField(upload_to=('static/blog/article-category-cover'))
+	cover_img = models.ImageField(upload_to=('blog/article-category-cover'))
 	summary = models.TextField(default="default summary")
 	class Meta:
 		verbose_name = "Article Category"
@@ -27,8 +27,9 @@ class Article(models.Model):
 	title = models.CharField(max_length=500, unique=True)
 	slug = models.SlugField(null=False, unique=True)
 	created_date = models.DateTimeField(auto_now_add =True)
-	updated_date = models.DateTimeField(auto_now=True) 
-	cover = models.ImageField(upload_to="static/blog/article-cover")
+	updated_date = models.DateTimeField(auto_now=True)
+	author = models.ForeignKey('auth.User', on_delete=models.CASCADE) 
+	cover = models.ImageField(upload_to="blog/article-cover")
 	summary = models.TextField()
 	content = models.TextField()
 	hide = models.BooleanField(default=False)
