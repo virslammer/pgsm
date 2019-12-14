@@ -5,4 +5,4 @@ lib used:
 - django
 - pillow
 - unidecode
-- tinymce
+- summernote
