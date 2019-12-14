@@ -2,8 +2,7 @@ from django.db import models
 from django.urls import reverse
 from django.utils.text import slugify
 from django.contrib.auth.models import User
-
-import unidecode
+from unidecode import unidecode
 # Create your models here.
 class ArticleCategory(models.Model):
 	name = models.CharField(max_length=100, unique=True)
@@ -20,7 +19,7 @@ class ArticleCategory(models.Model):
 		return reverse("blog:article-category", kwargs={"slug": self.slug})
 	def save(self, *args, **kwargs): 
 		if not self.slug:
-			self.slug = slugify(unidecode.unidecode(self.name))
+			self.slug = slugify(unidecode(self.name)) # Xoa dau tieng viet
 		return super().save(*args, **kwargs)
 	
 
@@ -43,8 +42,8 @@ class Article(models.Model):
 	def get_absolute_url(self):
 		return reverse("blog:article-detail", kwargs={"slug": self.slug})
 	def save(self, *args, **kwargs): 
-		if not self.id:
-			self.slug = slugify(unidecode.unidecode(self.title))
+		if not self.slug:
+			self.slug = slugify(unidecode(self.title))
 		return super(Article, self).save(*args, **kwargs)
 	
 

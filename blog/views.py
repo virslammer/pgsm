@@ -1,5 +1,6 @@
 from django.shortcuts import render, get_object_or_404
 from .models import ArticleCategory, Article
+from django.core.paginator import Paginator
 # Create your views here.
 def home(request):
 	context = {
@@ -8,7 +9,11 @@ def home(request):
 
 def article_list(request,slug):
 	obj  = get_object_or_404(ArticleCategory, slug=slug)
-	article_list = obj.article_set.all()
+	
+	a_list = obj.article_set.all()
+	paginator = Paginator(a_list,3)
+	page = request.GET.get('page')
+	article_list = paginator.get_page(page)
 	context = {
 		'category':obj,
 		'article_list':article_list

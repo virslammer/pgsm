@@ -865,10 +865,9 @@ h1, h2, h3, h4, h5,
         background: #2f89fc; }
 
 .pagination {
-  margin-bottom: 5em;
-  text-align: center !important;
-  display: block; }
-  .pagination li {
+
+}
+  /* .pagination li {
     margin-right: 2px;
     margin-bottom: 3px;
     display: inline-block; }
@@ -889,7 +888,7 @@ h1, h2, h3, h4, h5,
         color: #fff;
         border: 1px solid transparent; }
     .pagination li.active a {
-      border: 1px solid transparent !important; }
+      border: 1px solid transparent !important; } */
 
 .categories, .sidelink {
   padding: 0;
