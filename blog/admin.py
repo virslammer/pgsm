@@ -5,7 +5,7 @@ from django_summernote.admin import SummernoteModelAdmin
 # Register your models here.
 
 class ArticleCategoryAdmin(admin.ModelAdmin):
-    list_display = ['name','summary']
+    list_display = ['name','slug','summary']
     
 class ArticleAdmin(SummernoteModelAdmin):
     list_display = ['title','category','created_date','updated_date','slug', 'hide']

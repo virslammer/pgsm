@@ -3,10 +3,11 @@ from django.urls import reverse
 from django.utils.text import slugify
 from django.contrib.auth.models import User
 from unidecode import unidecode
+
 # Create your models here.
 class ArticleCategory(models.Model):
 	name = models.CharField(max_length=100, unique=True)
-	slug = models.SlugField(null=False, unique=True)
+	slug = models.SlugField(default='',editable=False)
 	cover_img = models.ImageField(upload_to=('blog/article-category-cover'))
 	summary = models.TextField(default="default summary")
 	class Meta:
@@ -18,8 +19,7 @@ class ArticleCategory(models.Model):
 	def get_absolute_url(self):
 		return reverse("blog:article-category", kwargs={"slug": self.slug})
 	def save(self, *args, **kwargs): 
-		if not self.slug:
-			self.slug = slugify(unidecode(self.name)) # Xoa dau tieng viet
+		self.slug = slugify(unidecode(self.name)) # Xoa dau tieng viet
 		return super().save(*args, **kwargs)
 	
 
@@ -46,4 +46,7 @@ class Article(models.Model):
 			self.slug = slugify(unidecode(self.title))
 		return super(Article, self).save(*args, **kwargs)
 	
+
+
+
 

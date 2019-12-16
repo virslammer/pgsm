@@ -6,3 +6,4 @@ lib used:
 - pillow
 - unidecode
 - summernote
+- django-cleanup

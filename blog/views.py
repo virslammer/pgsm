@@ -3,14 +3,23 @@ from .models import ArticleCategory, Article
 from django.core.paginator import Paginator
 # Create your views here.
 def home(request):
+
+	# Home page items 
+	main_articles = Article.objects.filter(hide=False).order_by('created_date')[:5]
+	all_articles =Article.objects.filter(hide=False).order_by('created_date')
+	paginator = Paginator(all_articles,9)
+	page = request.GET.get('page')
+	article_list = paginator.get_page(page)
 	context = {
+		'main_articles':main_articles,
+		'article_list':article_list
 	}
 	return render(request,'blog/index.html',context)
 
 def article_list(request,slug):
 	obj  = get_object_or_404(ArticleCategory, slug=slug)
 	
-	a_list = obj.article_set.all()
+	a_list = obj.article_set.filter(hide=False)
 	paginator = Paginator(a_list,3)
 	page = request.GET.get('page')
 	article_list = paginator.get_page(page)
@@ -21,7 +30,7 @@ def article_list(request,slug):
 	return render(request,'blog/list-posts.html',context)
 def article_detail(request,slug):
 
-	article = get_object_or_404(Article, slug=slug)
+	article = get_object_or_404(Article, slug=slug, hide=False)
 	context = {
 			'article':article
 		}

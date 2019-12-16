@@ -37,12 +37,11 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    # Own app 
+    'blog',
     # Third party 
     'django_summernote',
-    'tinymce',
-    
-    # Our app 
-    'blog'
+    'django_cleanup',
 ]
 
 MIDDLEWARE = [
