@@ -16,6 +16,8 @@ def home(request):
 	}
 	return render(request,'blog/index.html',context)
 
+
+
 def article_list(request,slug):
 	obj  = get_object_or_404(ArticleCategory, slug=slug)
 	

@@ -1,8 +1,7 @@
 {% load blog_tag_nav %}
 {% load static %}
-
-
-	
+{% blog_menu as menu%}
+{% blog_footer as footer%}
 
 
  <!DOCTYPE html>
@@ -58,7 +57,7 @@
           <div class="col-8 text-right">
             <nav class="site-navigation" role="navigation">
               <ul class="site-menu js-clone-nav mr-auto d-none d-lg-block mb-0">
-          {% blog_menu as menu%}
+          
 				        {% for item in menu %}
                 <li><a href="{{item.get_absolute_url}}">{{ item.name|capfirst }}</a></li>
  
@@ -84,7 +83,7 @@
         <div class="row mb-5">
           <div class="col-md-4">
             <h3 class="footer-heading mb-4">About Us</h3>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Placeat reprehenderit magnam deleniti quasi saepe, consequatur atque sequi delectus dolore veritatis obcaecati quae, repellat eveniet omnis, voluptatem in. Soluta, eligendi, architecto.</p>
+            <p>Bio</p>
           </div>
           <div class="col-md-3 ml-auto">
             <!-- <h3 class="footer-heading mb-4">Navigation</h3> -->

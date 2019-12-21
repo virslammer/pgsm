@@ -21,7 +21,7 @@ class ArticleCategory(models.Model):
 	def save(self, *args, **kwargs): 
 		self.slug = slugify(unidecode(self.name)) # Xoa dau tieng viet
 		return super().save(*args, **kwargs)
-	
+
 
 class Article(models.Model):
 	category = models.ForeignKey('ArticleCategory', on_delete=models.CASCADE)
@@ -46,6 +46,17 @@ class Article(models.Model):
 			self.slug = slugify(unidecode(self.title))
 		return super(Article, self).save(*args, **kwargs)
 	
+# Extend  User model
+class Profile(models.Model):
+	user = models.OneToOneField(User, on_delete=models.CASCADE)
+	bio = models.TextField(max_length=500, blank=True)
+	address = models.TextField(blank=True)
+	birth_date = models.DateField(null=True, blank=True)
+	def __str__(self):
+		return self.user
+
+
+
 
 
 

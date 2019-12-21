@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import ArticleCategory,Article
+from .models import ArticleCategory,Article,  Profile
 from django.contrib.auth.models import User
 from django_summernote.admin import SummernoteModelAdmin
 # Register your models here.
@@ -29,3 +29,4 @@ class ArticleAdmin(SummernoteModelAdmin):
 
 admin.site.register(ArticleCategory, ArticleCategoryAdmin)
 admin.site.register(Article, ArticleAdmin)
+admin.site.register(Profile)
