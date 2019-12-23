@@ -9,6 +9,7 @@ def blog_menu():
 	menu = ArticleCategory.objects.all()
 	return menu
 @register.simple_tag
-def blog_footer():
-	footer = User.objects.get(username='minhanh')
-	return footer
+def blog_profile():
+	user = User.objects.get(username='minhanh')
+	profile = Profile.objects.get(user=user)
+	return profile
