@@ -13,6 +13,7 @@ class Profile(models.Model):
 	address = models.TextField(blank=True)
 	birth_date = models.DateField(null=True, blank=True)
 	profile_pic = models.ImageField( upload_to="user/profile-pic", blank=True)
+
 	def __str__(self):
 		return self.user.username # Create your models here.
 	
@@ -26,19 +27,12 @@ class ArticleCategory(models.Model):
 	slug = models.SlugField(default='',editable=False)
 	cover_img = models.ImageField(upload_to=('blog/article-category-cover'))
 	summary = models.TextField(default="default summary")
-	article_count = models.IntegerField(default=0, editable=False)
+
 	class Meta:
 		verbose_name = "Article Category"
 		verbose_name_plural = "Article Categories"
 	def __str__(self):
 		return self.name
-	def count_article(self):
-		"""
-			count number of article on each category
-		"""
-		count = self.article_set.filter(hide=False).count()
-		self.article_count = count 
-		self.save()
 	def get_absolute_url(self):
 		return reverse("blog:article-category", kwargs={"slug": self.slug})
 	def save(self, *args, **kwargs): 
@@ -52,7 +46,7 @@ class Article(models.Model):
 	slug = models.SlugField(default='',editable=False)
 	created_date = models.DateTimeField(auto_now_add =True)
 	updated_date = models.DateTimeField(auto_now=True)
-	author = models.ForeignKey(Profile, on_delete=models.CASCADE, default='') 
+	author = models.ForeignKey(User, on_delete=models.CASCADE, default='') 
 	cover = models.ImageField(upload_to="blog/article-cover")
 	summary = models.TextField()
 	content = models.TextField()

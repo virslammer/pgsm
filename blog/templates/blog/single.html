@@ -14,8 +14,8 @@
               </a>
               <h1 class="mb-4"><a href="{{ article.get_absolute_url}}">{{article.title}}</a></h1>
               <div class="post-meta align-items-center text-center">
-                <figure class="author-figure mb-0 mr-3 d-inline-block"><img src="{% if article.author.profile_pic.url %}{{article.author.profile_pic.url}} {% endif %}" alt="Image" class="img-fluid"></figure>
-                <span class="d-inline-block mt-1">{{ article.author.nick_name }}</span>
+                <figure class="author-figure mb-0 mr-3 d-inline-block"><img src="{% if article.author.profile.profile_pic.url %}{{article.author.profile.profile_pic.url}} {% endif %}" alt="Image" class="img-fluid"></figure>
+                <span class="d-inline-block mt-1">{{ article.author.profile.nick_name }}</span>
                 <span>&nbsp;-&nbsp; {{article.created_date|date:"D, d M, Y"}}</span>
               </div>
             </div>
@@ -172,11 +172,11 @@
             <!-- END sidebar-box -->
             <div class="sidebar-box">
               <div class="bio text-center">
-                <img src="{% if article.author.profile_pic.url %}{{article.author.profile_pic.url}} {% endif %}" alt="Image Placeholder" class="img-fluid mb-5">
+                <img src="{% if article.author.profile.profile_pic.url %}{{article.author.profile.profile_pic.url}} {% endif %}" alt="Image Placeholder" class="img-fluid mb-5">
                 <div class="bio-body">
-                  <h2>{{article.author.nick_name}}</h2>
-                  <p class="mb-4">{{article.author.bio|slice:":200"}}</p>
-                  <p><a href="{{ article.author.get_absolute_url }}" class="btn btn-primary btn-sm rounded px-4 py-2">Read my bio</a></p>
+                  <h2>{{article.author.profile.nick_name}}</h2>
+                  <p class="mb-4">{{article.author.profile.bio|slice:":200"}}</p>
+                  <p><a href="{{ article.author.profile.get_absolute_url }}" class="btn btn-primary btn-sm rounded px-4 py-2">Read my bio</a></p>
                   <p class="social">
                     <a href="#" class="p-2"><span class="fa fa-facebook"></span></a>
                     <a href="#" class="p-2"><span class="fa fa-twitter"></span></a>
@@ -233,7 +233,7 @@
               <h3 class="heading">Categories</h3>
               <ul class="categories">
                 {% for item in menu %}
-                <li><a href="{{ item.get_absolute_url }}"> {{item.name}}<span>(12)</span> s</a></li>
+                <li><a href="{{ item.get_absolute_url }}"> {{item.name}}<span>({{ item.article_set.count}})</span> </a></li>
                 {% endfor %}
               </ul>
             </div>

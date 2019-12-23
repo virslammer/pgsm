@@ -62,6 +62,7 @@
                 <li><a href="{{item.get_absolute_url}}">{{ item.name|capfirst }}</a></li>
  
                 {% endfor %}
+                <li><a href="{% url "blog:about" "minhanh"%}">About Me</a></li>
                 <li class="d-none d-lg-inline-block"><a href="#" class="js-search-toggle"><span class="icon-search"></span></a></li>
               </ul>
             </nav>
