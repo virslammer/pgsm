@@ -5,6 +5,12 @@ from django.contrib.auth.models import User
 from django.db.models import signals
 from unidecode import unidecode
 
+
+class BlogInfo(models.Model):
+    name = models.CharField(max_length=50, default='PGSM',unique=True)
+    logo = models.ImageField(upload_to='blog/article-category-cover')
+    def __str__(self):
+        return self.name
 # Extend  User model
 class Profile(models.Model):
 	user = models.OneToOneField(User, on_delete=models.CASCADE)
@@ -26,7 +32,7 @@ class Profile(models.Model):
 class ArticleCategory(models.Model):
 	name = models.CharField(max_length=100, unique=True)
 	slug = models.SlugField(default='',editable=False)
-	cover_img = models.ImageField(upload_to=('blog/article-category-cover'))
+	cover_img = models.ImageField(upload_to='blog/article-category-cover')
 	summary = models.TextField(default="default summary")
 
 	class Meta:

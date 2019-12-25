@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import ArticleCategory,Article,  Profile
+from .models import ArticleCategory,Article,  Profile, BlogInfo
 from django.contrib.auth.models import User
 from django_summernote.admin import SummernoteModelAdmin
 # Register your models here.
@@ -27,6 +27,7 @@ class ArticleAdmin(SummernoteModelAdmin):
         request.GET = data
         return super(ArticleAdmin, self).add_view(request, form_url="", extra_context=extra_context)
 
+admin.site.register(BlogInfo)
 admin.site.register(ArticleCategory, ArticleCategoryAdmin)
 admin.site.register(Article, ArticleAdmin)
 admin.site.register(Profile)

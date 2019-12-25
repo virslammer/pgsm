@@ -6,8 +6,8 @@ from django.core.paginator import Paginator
 def home(request):
 
 	# Home page items 
-	main_articles = Article.objects.filter(hide=False).order_by('created_date')[:5]
-	all_articles =Article.objects.filter(hide=False).order_by('created_date')
+	main_articles = Article.objects.filter(hide=False).order_by('-created_date')[:5]
+	all_articles =Article.objects.filter(hide=False).order_by('-created_date')
 	paginator = Paginator(all_articles,9)
 	page = request.GET.get('page')
 	article_list = paginator.get_page(page)
