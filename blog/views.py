@@ -34,8 +34,10 @@ def article_list(request,slug):
 def article_detail(request,slug):
 
 	article = get_object_or_404(Article, slug=slug, hide=False)
+	related_articles = Article.objects.filter(category=article.category, hide=False)
 	context = {
-			'article':article
+			'article':article,
+			'related_articles': related_articles
 		}
 	return render(request,'blog/single.html',context)
 

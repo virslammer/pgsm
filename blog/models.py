@@ -10,10 +10,11 @@ class Profile(models.Model):
 	user = models.OneToOneField(User, on_delete=models.CASCADE)
 	nick_name = models.CharField(max_length=50,default='')
 	bio = models.TextField(blank=True)
-	address = models.TextField(blank=True)
+	fb_link = models.CharField(max_length=250, blank=True, verbose_name="Facebook")
+	address = models.TextField(blank=True )
 	birth_date = models.DateField(null=True, blank=True)
-	profile_pic = models.ImageField( upload_to="user/profile-pic", blank=True)
-
+	profile_pic = models.ImageField( upload_to="user/profile-pic", blank=True, verbose_name="Avatar")
+	cover_pic = models.ImageField( upload_to="user/cover-pic", blank=True, verbose_name="Cover")
 	def __str__(self):
 		return self.user.username # Create your models here.
 	
@@ -50,6 +51,7 @@ class Article(models.Model):
 	cover = models.ImageField(upload_to="blog/article-cover")
 	summary = models.TextField()
 	content = models.TextField()
+	tag = models.CharField( max_length=250,blank=True)
 	hide = models.BooleanField(default=False)
 	class Meta:
 		verbose_name = "Article"

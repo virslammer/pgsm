@@ -11,7 +11,7 @@ class ArticleAdmin(SummernoteModelAdmin):
     list_display = ['title','category','created_date','updated_date','slug', 'hide']
     list_editable = ['hide']
     list_filter = ['category']
-    summernote_fields = ('content','summary')
+    summernote_fields = ('content')
     def formfield_for_foreignkey(self, db_field, request, **kwargs):
         if db_field.name == 'author':
             kwargs['queryset'] = User.objects.filter(username=request.user.username)

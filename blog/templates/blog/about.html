@@ -1,19 +1,20 @@
  {% extends 'base.html' %}
+
 {% block title %}
 
     <title>Mini Blog</title>
 {% endblock %}
   
 {% block content %}
+{% load blog_tag_nav %}
     
-    
-    <div class="site-cover site-cover-sm same-height overlay single-page" style=" background-image: url('{{user_profile.profile_pic.url}}');">
+    <div class="site-cover site-cover-sm same-height overlay single-page" style=" background-image: url('{{ profile.cover_pic.url|file_exists}}');">
       <div class="container">
         <div class="row same-height justify-content-center">
           <div class="col-md-12 col-lg-10">
             <div class="post-entry text-center">
-              <h1 class="">About Us</h1>
-              <p class="lead mb-4 text-white">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolorem, adipisci?</p>
+              <h1 class="">About Me</h1>
+              <p class="lead mb-4 text-white">Hoàng Minh Anh - Python Developer</p>
             </div>
           </div>
         </div>
@@ -25,7 +26,7 @@
       <div class="container">
         <div class="row">
           <div class="col-md-6 order-md-2">
-            <img src="images/img_1.jpg" alt="Image" class="img-fluid">
+            <img src="{{ user_profile.profile_pic.url}}" alt="Image" class="img-fluid">
           </div>
           <div class="col-md-5 mr-auto order-md-1">
             <h2>We Love To Explore</h2>
