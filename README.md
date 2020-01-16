@@ -1,7 +1,7 @@
 # pgsm
-Person Blog
+Personal Blog
 
-lib used:
+library used:
 - django
 - pillow
 - unidecode
