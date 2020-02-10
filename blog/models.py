@@ -2,20 +2,25 @@ from django.db import models
 from django.urls import reverse
 from django.utils.text import slugify
 from django.contrib.auth.models import User
-from django.db.models import signals
 from unidecode import unidecode
+from ckeditor.fields import RichTextField
+
 
 
 class BlogInfo(models.Model):
-    name = models.CharField(max_length=50, default='PGSM',unique=True)
-    logo = models.ImageField(upload_to='blog/article-category-cover')
-    def __str__(self):
-        return self.name
+	name = models.CharField(max_length=50, default='PGSM',unique=True)
+	logo = models.ImageField(upload_to='blog/article-category-cover')
+
+	def __str__(self):
+		return self.name
+	class Meta:
+		verbose_name = "Blog information"
+		verbose_name_plural = "Blog information"
 # Extend  User model
 class Profile(models.Model):
 	user = models.OneToOneField(User, on_delete=models.CASCADE)
 	nick_name = models.CharField(max_length=50,default='')
-	bio = models.TextField(blank=True)
+	bio = RichTextField()
 	fb_link = models.CharField(max_length=250, blank=True, verbose_name="Facebook")
 	address = models.TextField(blank=True )
 	birth_date = models.DateField(null=True, blank=True)
@@ -23,9 +28,12 @@ class Profile(models.Model):
 	cover_pic = models.ImageField( upload_to="user/cover-pic", blank=True, verbose_name="Cover")
 	def __str__(self):
 		return self.user.username # Create your models here.
-	
+
 	def get_absolute_url(self):
 		return reverse("blog:about", kwargs={"user": self.user.username})
+	class Meta:
+		verbose_name = "Profile"
+		verbose_name_plural = "Profile"
 	
 
 
@@ -56,7 +64,7 @@ class Article(models.Model):
 	author = models.ForeignKey(User, on_delete=models.CASCADE, default='') 
 	cover = models.ImageField(upload_to="blog/article-cover")
 	summary = models.TextField()
-	content = models.TextField()
+	content = RichTextField()
 	tag = models.CharField( max_length=250,blank=True)
 	hide = models.BooleanField(default=False)
 	class Meta:

@@ -40,7 +40,7 @@ INSTALLED_APPS = [
     # Own app 
     'blog',
     # Third party 
-    'django_summernote',
+    'ckeditor',
     'django_cleanup',
 ]
 

@@ -4,7 +4,6 @@ from django.contrib.auth.models import User
 from django.core.paginator import Paginator
 # Create your views here.
 def home(request):
-
 	# Home page items 
 	main_articles = Article.objects.filter(hide=False).order_by('-created_date')[:5]
 	all_articles =Article.objects.filter(hide=False).order_by('-created_date')
@@ -16,7 +15,6 @@ def home(request):
 		'article_list':article_list
 	}
 	return render(request,'blog/index.html',context)
-
 
 
 def article_list(request,slug):

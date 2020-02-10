@@ -1,17 +1,16 @@
 from django.contrib import admin
 from .models import ArticleCategory,Article,  Profile, BlogInfo
 from django.contrib.auth.models import User
-from django_summernote.admin import SummernoteModelAdmin
+
 # Register your models here.
 
 class ArticleCategoryAdmin(admin.ModelAdmin):
     list_display = ['name','slug','summary' ]
     
-class ArticleAdmin(SummernoteModelAdmin):
+class ArticleAdmin(admin.ModelAdmin):
     list_display = ['title','category','created_date','updated_date','slug', 'hide']
     list_editable = ['hide']
     list_filter = ['category']
-    summernote_fields = ('content')
     def formfield_for_foreignkey(self, db_field, request, **kwargs):
         if db_field.name == 'author':
             kwargs['queryset'] = User.objects.filter(username=request.user.username)

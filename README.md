@@ -5,5 +5,5 @@ library used:
 - django
 - pillow
 - unidecode
-- summernote
+- django-ckeditor
 - django-cleanup

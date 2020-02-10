@@ -175,8 +175,8 @@
               <div class="bio text-center">
                 <img src="{% if article.author.profile.profile_pic.url %}{{article.author.profile.profile_pic.url}} {% endif %}" alt="Image Placeholder" class="img-fluid mb-5">
                 <div class="bio-body">
-                  <h2>{{article.author.profile.nick_name}}</h2>
-                  <p class="mb-4">{{article.author.profile.bio|slice:":200"}}</p>
+                  <h2>{{article.author.profile.nick_name|safe}}</h2>
+                  <p class="mb-4">{{article.author.profile.bio|safe}}</p>
                   <p><a href="{{ article.author.profile.get_absolute_url }}" class="btn btn-primary btn-sm rounded px-4 py-2">Read my bio</a></p>
                   <p class="social">
                     <a href="#" class="p-2"><span class="fa fa-facebook"></span></a>

@@ -84,7 +84,7 @@
         <div class="row mb-5">
           <div class="col-md-8">
             <h3 class="footer-heading mb-4">About Me</h3>
-            <p>{{profile.bio|slice:":150"}} ...<a href="{% url "blog:about" "minhanh"%}">Read more</a></p>
+            <p>{{profile.bio|safe}} ...<a href="{% url "blog:about" "minhanh"%}">Read more</a></p>
             
           </div>
           
