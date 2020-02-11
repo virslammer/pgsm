@@ -9,7 +9,7 @@ from ckeditor.fields import RichTextField
 
 class BlogInfo(models.Model):
 	name = models.CharField(max_length=50, default='PGSM',unique=True)
-	logo = models.ImageField(upload_to='blog/article-category-cover')
+	logo = models.ImageField(upload_to='blog/favicon')
 
 	def __str__(self):
 		return self.name

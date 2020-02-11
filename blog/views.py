@@ -5,8 +5,8 @@ from django.core.paginator import Paginator
 # Create your views here.
 def home(request):
 	# Home page items 
-	main_articles = Article.objects.filter(hide=False).order_by('-created_date')[:5]
-	all_articles =Article.objects.filter(hide=False).order_by('-created_date')
+	main_articles = Article.objects.filter(hide=False).order_by('-updated_date')[:5]
+	all_articles =Article.objects.filter(hide=False).order_by('-updated_date')
 	paginator = Paginator(all_articles,9)
 	page = request.GET.get('page')
 	article_list = paginator.get_page(page)
@@ -20,7 +20,7 @@ def home(request):
 def article_list(request,slug):
 	obj  = get_object_or_404(ArticleCategory, slug=slug)
 	
-	a_list = obj.article_set.filter(hide=False)
+	a_list = obj.article_set.filter(hide=False).order_by('-updated_date')
 	paginator = Paginator(a_list,3)
 	page = request.GET.get('page')
 	article_list = paginator.get_page(page)
