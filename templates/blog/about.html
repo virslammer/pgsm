@@ -1,0 +1,39 @@
+ {% extends 'base.html' %} {% block title %}
+
+<title>Mini Blog</title>
+{% endblock %} {% block content %} {% load blog_tag_nav %}
+
+<div class="site-cover site-cover-sm same-height overlay single-page" style=" background-image: url('{{ profile.cover_pic_url}}');">
+    <div class="container">
+        <div class="row same-height justify-content-center">
+            <div class="col-md-12 col-lg-10">
+                <div class="post-entry text-center">
+                    <h2 class="">{{profile.nick_name}} - Fresher Python Developer</h2>
+                    
+                    <p class="lead mb-4 text-white"> </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="site-section bg-light">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6 order-md-2">
+                <img src="{{ profile.profile_pic_url}}" alt="Image" class="img-fluid">
+            </div>
+            <div class="col-md-5 mr-auto order-md-1">
+                <h2>About Me</h2>
+                <p>{{ profile.bio|safe }}</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+{% endblock %}

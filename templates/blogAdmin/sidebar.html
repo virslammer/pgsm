@@ -1,0 +1,14 @@
+
+<div class="bg-dark border-right" id="sidebar-wrapper">
+    <div class="sidebar-heading">Admin Panel </div>
+    <div class="list-group list-group-flush">
+      <a href="{% url 'blogAdmin:dashboard' %}" class="list-group-item bg-dark sidebar-item">Dashboard</a>
+      <a href="{% url 'blogAdmin:all-articles' %}" class="list-group-item bg-dark sidebar-item">All Articles</a>
+      <a href="{% url 'blogAdmin:create-article' %}" class="list-group-item bg-dark sidebar-item">Create New Article</a>
+      <a href="{% url 'blogAdmin:blog-setting' %}" class="list-group-item bg-dark sidebar-item">Setting</a>
+      <!-- <a href="#" class="list-group-item list-group-item-action bg-light">Overview</a>
+      <a href="#" class="list-group-item list-group-item-action bg-light">Events</a>
+      <a href="#" class="list-group-item list-group-item-action bg-light">Profile</a>
+      <a href="#" class="list-group-item list-group-item-action bg-light">Status</a> -->
+    </div>
+</div>

@@ -1,19 +1,23 @@
-# pgsm
+---------------------------
+            pgsm
+---------------------------
 My simple personal blog .
 
-library in virtual environment:
-    asgiref         3.2.3
-    Django          3.0.3
-    django-ckeditor 5.9.0
-    django-cleanup  4.0.0
-    django-js-asset 1.2.2
-    django-tinymce  2.8.0
-    Pillow          7.0.0
-    pip             19.2.3
-    pytz            2019.3
-    setuptools      41.2.0
-    sqlparse        0.3.0
-    Unidecode       1.1.1
+### How to show main articles in Homepage
+add text to remark field of article with format as below. If 2 article have the same remark , it'll show the latest created article :
+1 --- 'home-left-top'
+2 --- 'home-left-bottom'
+3 --- 'home-middle'
+4 --- 'home-right-top'
+5 --- 'home-right-bottom'
+------               ------
+| 1  |               |  4 |  
+|    |     ------    |    |
+------     | 3  |    ------     
+------     |    |    ------
+| 2  |     ------    |  5 | 
+|    |               |    | 
+------               ------
 
 
 Credit: Minh Anh Hoang

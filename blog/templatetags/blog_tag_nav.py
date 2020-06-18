@@ -1,5 +1,5 @@
 from django import template 
-from blog.models import ArticleCategory, Profile
+from blog.models import ArticleCategory
 from django.contrib.auth.models import User
 from django.core.files.storage import Storage, default_storage
 register = template.Library()
@@ -9,12 +9,6 @@ register = template.Library()
 def blog_menu():
 	menu = ArticleCategory.objects.all()
 	return menu
-@register.simple_tag
-def blog_profile():
-	user = User.objects.get(username='minhanh')
-	profile = Profile.objects.get(user=user)
-	return profile
-
 @register.filter
 def file_exists(filepath):
 	# if default_storage.exists(filepath):

@@ -1,0 +1,53 @@
+{% extends 'blogAdmin/blogAdmin-base.html' %} 
+{% block content %}
+
+<div id='all-articles' class="row">
+    <div class="col">
+        <h5>ALL  ARTICLES</h5>
+        <hr>
+        <div class="card card-body">
+            <table class="table table-sm">
+                <tr>
+                    <th>Title</th>
+                    <th>Summary</th>
+                    <th>Author</th>
+                    <th>Created date</th>
+                    <th>Detail</th>
+                    <th>Update</th>
+                    <th>Remove</th>
+                </tr>
+
+                {% for article in articles %}
+                <tr>
+                    <td>{{ article.title}}</td>
+                    <td>{{ article.summary}}</td>
+                    <td>{{ article.author }}</td>
+                    <td>{{ article.created_date}}</td>
+                    <td><a href="" class="btn btn-info">Detail</a></td>
+                    <td><a href="" class="btn btn-primary">Update</a></td>
+                    <td><a href="" class="btn btn-danger">Remove</a></td>
+                </tr>
+
+                {% endfor %}
+            </table>
+        </div>
+        <br>
+        <div class="row">
+            <div class="col-md">
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                        <form action="" method="GET">
+                        {{article_filter.form}}
+
+
+                        <button class="btn btn-primary" type="submit">Search</button>
+                        <a href=""> Reset </a>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <br>
+    </div>
+</div>
+{% endblock %}

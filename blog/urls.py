@@ -2,10 +2,11 @@ from django.contrib import admin
 from django.urls import path
 from blog.views import *
 
-app_name='blog'
+
 urlpatterns = [
-    path('', home, name='home-page'),
-    path('article-category/<str:slug>', article_list, name='article-category'),
-    path('<str:slug>', article_detail, name='article-detail'),
-    path('about/<str:user>',about, name='about')
+    path('', Home, name='home-page'),
+    path('article-category/<str:slug>', ArticleList, name='article-category'),
+    path('<str:slug>', ArticleDetail, name='article-detail'),
+    path('article-search/', ArticleSearch, name='article-search'),
+    path('about/', About, name='about'),
 ]

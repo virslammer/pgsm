@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Not Authorize</title>
+</head>
+<body>
+    <h3>You are not authorized to see this view</h3>
+    <a href="{% url 'blogAdmin:dashboard' %}" > Move to dashboard </a>
+    <a href="{% url 'blogAdmin:logout' %}" >Reset session </a>
+</body>
+</html>

@@ -1,0 +1,11 @@
+{%extends 'blogAdmin/blogAdmin-base.html' %}
+
+{% block content %}
+<h3>Update Article</h3>
+<form action="" method='POST'>
+    {%csrf_token%}
+    {{form.as_p}}
+    <input type="submit" name='Update Article'>
+</form>
+
+{% endblock %}

@@ -39,10 +39,14 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     # Own app 
     'blog',
+    'blogAdmin',
     # Third party 
     'ckeditor',
+    'ckeditor_uploader',
     'django_cleanup',
+    
 ]
+
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -131,3 +135,5 @@ STATICFILES_DIRS = [
     os.path.join(BASE_DIR, "static"),
     MEDIA_ROOT
 ]
+
+CKEDITOR_UPLOAD_PATH = 'uploads/'
