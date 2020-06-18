@@ -1,7 +1,7 @@
 ---------------------------
             pgsm
 ---------------------------
-My simple personal blog .
+My simple personal blog . Link:http://minhanhhoang2611.pythonanywhere.com/
 
 ### How to show main articles in Homepage
 add text to remark field of article with format as below. If 2 article have the same remark , it'll show the latest created article :
