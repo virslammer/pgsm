@@ -1,6 +1,6 @@
 ## The following requirements were added by pip freeze:
 asgiref==3.2.3
-Django==3.0.7
+Django==3.1.9
 django-ckeditor==5.9.0
 django-cleanup==4.0.0
 django-cors-headers==3.2.1
